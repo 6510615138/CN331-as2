@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %} Login {% endblock %}
+{% block content %}
+<body>
+    <div class="bg-img">
+        <div class="content">
+            <header>Scholar Login</header>
+            <form action="{% url 'login_view' %}" method="post">
+                {% csrf_token %}
+                <div class="field space">
+                    <span></span>
+                    <input type="text" name="username" placeholder="Username">
+                </div>
+                <div class="field space">
+                    <span></span>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="field">
+                    <input type="submit" value="LOGIN">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
+

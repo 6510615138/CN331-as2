@@ -1,0 +1,37 @@
+{% extends 'courses/board_page.html' %}
+{% load static %}
+{% block head %}Scholar list{% endblock%}
+{% block sclist %}
+    <div>
+        <div>
+            <form action="{% url 'management' %}" method="post">
+                {% csrf_token %}
+                <select name="reg_course_id" onchange="if(this.value != 0) this.form.submit();">
+                    <option value="0">
+                        {{courses.ID}}: {{ courses.course_name }}
+                    </option>
+                    {% for course in all_course %}
+                    <option value="{{ course.ID }}"> {{courses.ID}}: {{course.course_name}}</option>
+                    {% endfor %}
+                </select>
+            </form>
+            <h3>Course {{courses.ID}}: {{courses.course_name}}</h3>
+        </div>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>Scholar ID</th>
+                <th>Name</th>
+            </thead>
+            <tbody>
+                {% for sc in register %}
+                <tr>
+                    <td>{{sc.ID}}</td>
+                    <td>{{sc.scholar_name}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'courses/index.html' %}
+{% load static %}
+{% block head %} My course {% endblock %}
+{% block page %}
+<nav class="navbar">
+    <ul class="list">
+        {% if admin %}
+            <li class="list-item"><a href="{% url 'user_page' %}"><p class="a-p">Admin Profile</p></a></li>
+            <li class="list-item"><a href="{% url 'admin:index' %}"><p class="a-p">Admin Site</p></a></li>
+            <li class="list-item"><a class="active" href="{% url 'board_page' %}"><p class="a-p">Scholar list</p></a></li>
+        {% else %}
+            <li class="list-item"><a href="{% url 'user_page' %}"><p class="a-p">User Profile</p></a></li>
+            <li class="list-item"><a class="active" href="{% url 'board_page' %}"><p class="a-p">My course</p></a></li>
+        {% endif %}
+        <li class="list-item"><a href="{% url 'course_page' %}"><p class="a-p">Course List</p></a></li>
+        <li class="list-item"><a href="{% url 'logout_view' %}"><p class="a-p">Log Out</p></a></li>
+    </ul>
+</nav>
+    <section class="sec">
+        {% if admin %}
+        {% block sclist %}
+
+        {% endblock %}
+        {% else %}
+        <div>
+            <table>
+                <thead>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Cancel</th>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{course.ID}}</td>
+                        <td>{{course.course_name}}</td>
+                        <td>
+                            <form action="{% url 'cancel_quota' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="reg_course_id" value="{{ course.ID }}" class="btc">Cancel</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </section>
+{% endblock %}
