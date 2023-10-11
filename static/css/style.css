@@ -1,40 +1,84 @@
-.bg-img {
-  background: url(https://engr.tu.ac.th/uploads/images_virtual_bg/2021.7.12_210712_9_.jpg);
+:root{
+  --color1:rgb(147, 34, 34);
+  --color1h:rgb(98, 21, 21);
+  --color2:rgb(177, 70, 43);
+  --color3:rgb(255, 155, 80);
+  --color4:rgb(255, 187, 92);
+
+  --white1:#fafaf9;
+}
+body{
+  width: 100vw;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
+  margin:0;
 }
 
-.bg-img::after {
+.bg-img {
+  background: url(https://engr.tu.ac.th/uploads/images_virtual_bg/2021.7.12_210712_9_.jpg);
+  width:100%;
+  background-size:cover;
+  background-position: center;
   position: absolute;
-  content: "";
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  align-content: center;
+  justify-content: center;
+  display: flex;
 }
 
 .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  color:#222;
+  position:relative;
   text-align: center;
   z-index: 999;
-  width: 370px;
+  min-width: 370px;
+  width: fit-content;
+  height: 370px;
   text-align: center;
-  padding: 60px 32px;
-  background: rgba(255, 255, 255, 0.03);
-  bow-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+  background-color: aliceblue;
+  border-radius: 1.5rem;
+  margin-top: 10%;
+  padding:  10px 0px;
 }
 
+.signup {
+  display: flex;
+  flex-direction: column;
+  color:#222;
+  position:relative;
+  text-align: center;
+  z-index: 999;
+  min-width: 370px;
+  width: 620px;
+  height: 480px;
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 1.5rem;
+  margin-top: 10%;
+  padding:  10px 0px;
+}
+
+.signup form{
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .content header {
-  color: white;
+  color:#222;
+  width: 100%;
   font-size: 30px;
   font-weight: 600;
-  margin: 0 0 35px 0;
+  margin: 45px 0 0 0;
   font-family: "Poppins", sans-serif;
+}
+.login-form{
+  padding: 25px 30px;
 }
 
 .field {
@@ -43,6 +87,7 @@
   width: 100%;
   display: flex;
   background: rgba(255, 255, 255, 0.91);
+  margin: 4px 0px;
 }
 
 .field span {
@@ -96,49 +141,57 @@ input[type="submit"]:hover {
   display: block;
   overflow: hidden;
 }
+.layout{
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 275px auto;
+}
 
 .navbar {
-  display: block;
-  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 100vh;
-  background-color: rgb(147, 34, 34);
+  background-color: var(--color1);
+}
+
+.logo{
+  width: 275;
+  min-height: 50px;
+  height: fit-content;
 }
 
 .list {
-  list-style-type: none;
   margin: 0;
-  padding: 20px;
-  width: 220px;
+  list-style-type: none;
+  width: 275px;
+  padding:0;
 }
 
 .list li a {
   display: block;
-  border-radius: 15px;
   color: #fff;
-  background-color: rgb(255, 179, 0);
-  padding: 8px 8px 8px 0;
+  background-color: var(--color1);
+  padding: 16px 8px;
   text-decoration: none;
-  margin: 10px 0;
   font-size: 22px;
   font-weight: bolder;
   font-family: "Montserrat", sans-serif;
 }
 
-.list-item a.active {
-  color: red;
+.list-item a:active {
+  background-color: var(--color1h);
 }
 
 .list-item a:hover:not(.active) {
-  background-color: #868613f9;
-  color: red;
+  background-color: var(--color2);
 }
 
 .list-item a:hover:not(.active) .fa {
-  background-color: #868613f9;
-  color: red;
+  background-color: var(--color2);;
 }
-
 .a-p {
   position: relative;
   left: 60px;
@@ -154,10 +207,8 @@ input[type="submit"]:hover {
   z-index: 100;
   display: block;
   overflow: hidden;
-  margin: 20px;
   padding: 0px 30px;
-  border-radius: 10px;
-  height: 95vh;
+  height: 100vh;
   width: 77.5vw;
   position: absolute;
   right: 0;

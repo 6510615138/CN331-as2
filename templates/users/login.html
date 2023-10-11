@@ -5,21 +5,22 @@
 <body>
     <div class="bg-img">
         <div class="content">
-            <header>Scholar Login</header>
-            <form action="{% url 'login_view' %}" method="post">
+            <header>Login</header>
+            <form action="{% url 'login_view' %}" method="post" class="login-form">
                 {% csrf_token %}
                 <div class="field space">
                     <span></span>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="username" placeholder="Username" required>
                 </div>
                 <div class="field space">
                     <span></span>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="field">
                     <input type="submit" value="LOGIN">
                 </div>
             </form>
+            <label>Don't have an account? <a href="signup/">Sign up.</a></label>
         </div>
     </div>
 </body>

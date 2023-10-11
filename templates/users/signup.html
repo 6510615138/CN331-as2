@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %} Login {% endblock %}
+{% block content %}
+<body>
+    <div class="bg-img">
+        <div class="signup content">
+            <header>Sign up</header>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="field">
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+                <div class="field">
+                    {{ form.firstname }}
+                </div>
+                <div class="field">
+                    {{ form.lastname }}
+                </div>
+                <div class="field">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+                <div class="field">
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                </div>
+                <div class="field">
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                </div>
+                <input type="submit" value="CreateUser">
+            </form>
+            <label>already have account?<a href='/'>Log in.</a></label>
+        </div>
+    </div>
+</body>
+{% endblock %}
