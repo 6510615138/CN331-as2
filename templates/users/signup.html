@@ -4,7 +4,7 @@
 {% block content %}
 <body>
     <div class="bg-img">
-        <div class="signup content">
+        <div class="signup">
             <header>Sign up</header>
             <form method="post">
                 {% csrf_token %}
@@ -14,10 +14,12 @@
                     {{ form.username.errors }}
                 </div>
                 <div class="field">
-                    {{ form.firstname }}
+                    {{ form.first_name }}
+                    {{ form.first_name.errors }}
                 </div>
                 <div class="field">
-                    {{ form.lastname }}
+                    {{ form.last_name }}
+                    {{ form.last_name.errors }}
                 </div>
                 <div class="field">
                     {{ form.email }}
