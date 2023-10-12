@@ -10,30 +10,31 @@
                 {% csrf_token %}
                 {{ form.non_field_errors }}
                 <div class="field">
+                    {{ form.username.label_tag }}<br>
                     {{ form.username }}
                     {{ form.username.errors }}
                 </div>
                 <div class="field">
+                    {{ form.first_name.label_tag }}<br>
                     {{ form.first_name }}
                     {{ form.first_name.errors }}
                 </div>
                 <div class="field">
+                    {{ form.last_name.label_tag }}<br>
                     {{ form.last_name }}
                     {{ form.last_name.errors }}
                 </div>
                 <div class="field">
-                    {{ form.email }}
-                    {{ form.email.errors }}
+                    {{ form.password1.label_tag }}<br>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
                 </div>
                 <div class="field">
-                    {{ form.password }}
-                    {{ form.password.errors }}
-                </div>
-                <div class="field">
+                    {{ form.password2.label_tag }}<br>
                     {{ form.password2 }}
                     {{ form.password2.errors }}
                 </div>
-                <input type="submit" value="CreateUser">
+                <input type="submit" value="Register">
             </form>
             <label>already have account?<a href='/'>Log in.</a></label>
         </div>

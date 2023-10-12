@@ -1,60 +1,24 @@
 from django import forms
-from django.forms import ValidationError
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
+from users.models import Scholar
 
-class createUserForm(forms.Form):
-    username = forms.CharField(label=_('Username'), max_length=25,widget=forms.TextInput(attrs={'placeholder': 'username'}))
-    email = forms.EmailField(label=_('Email'), max_length=86,widget=forms.TextInput(attrs={'placeholder': 'email'}))
-    firstname = forms.CharField(label=_('firstname'), max_length=25,widget=forms.TextInput(attrs={'placeholder': 'firstname'}))
-    lastname = forms.CharField(label=_('lastname'), max_length=25,widget=forms.TextInput(attrs={'placeholder': 'lastname'}))
-    password = forms.CharField(label=_('Password'), max_length=25, widget=forms.PasswordInput(attrs={'placeholder': 'password'}))
-    password2 = forms.CharField(label=_('Confirm password'), max_length=25, widget=forms.PasswordInput(attrs={'placeholder': 'comfirm password'}))
+User = get_user_model()
 
-    def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get('password')
-        password2 = cleaned_data.get('password2')
+class createUserForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=True, help_text='Required. Enter your first name.')
+    last_name = forms.CharField(max_length=30, required=True, help_text='Required. Enter your last name.')
 
-        # Check if passwords match
-        if password != password2:
-            raise ValidationError(_('Passwords do not match'))
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'password1', 'password2')
 
-        # Check if the username is already in use
-        username = cleaned_data.get('username')
-        firstname = cleaned_data.get('firstname')
-        lastname = cleaned_data.get('lastname')
-        if User.objects.filter(username=username).exists():
-            raise ValidationError(_('This username is already in use'))
-
-    def create(self):
-    
-            # Access cleaned form data 
-            username = self.cleaned_data['username']
-            email = self.cleaned_data['email']
-            password = self.cleaned_data['password']
-            firstname = self.cleaned_data['firstname']
-            lastname = self.cleaned_data['lastname']
-            # Create the user
-            user = User.objects.create_user(username=username, email=email, password=password)
-            user.first_name = firstname
-            user.last_name = lastname
+    def save(self, commit=True):
+        user = super(createUserForm, self).save(commit=False)  # Use the correct class name
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        scholar = Scholar(ID=user, scholar_name=user.get_full_name(), scholar_email=user.email)
+        if commit:
             user.save()
-    
-    
-    def createAndLogin(self,request):
-    
-             # Access cleaned form data 
-            username = self.cleaned_data['username']
-            email = self.cleaned_data['email']
-            password = self.cleaned_data['password']
-            firstname = self.cleaned_data['firstname']
-            lastname = self.cleaned_data['lastname']
-            # Create the user
-            user = User.objects.create_user(username=username, email=email, password=password)
-            user.first_name = firstname
-            user.last_name = lastname
-            user.save()
-            login(request,user)
+            scholar.save()
+        return user 
