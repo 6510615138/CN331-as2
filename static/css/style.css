@@ -1,48 +1,125 @@
-.bg-img {
-  background: url(https://engr.tu.ac.th/uploads/images_virtual_bg/2021.7.12_210712_9_.jpg);
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
+:root{
+  --color1:rgb(147, 34, 34);
+  --color1h:rgb(98, 21, 21);
+  --color2:rgb(177, 70, 43);
+  --color3:rgb(255, 155, 80);
+  --color4:rgb(255, 187, 92);
+
+  --white1:#fafaf9;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
 
-.bg-img::after {
-  position: absolute;
-  content: "";
+::-webkit-scrollbar{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #55555557;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  margin:0;
+}
+
+.bg-img {
+  background: url(https://engr.tu.ac.th/uploads/images_virtual_bg/2021.7.12_210712_9_.jpg);
+  background-size:cover;
+  background-position: center;
+  overflow: hidden;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  padding: 20px;
 }
 
 .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  color:#222;
+  position:relative;
   text-align: center;
   z-index: 999;
-  width: 370px;
+  min-width: 370px;
+  width: fit-content;
+  height: fit-content;
   text-align: center;
-  padding: 60px 32px;
-  background: rgba(255, 255, 255, 0.03);
-  bow-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+  background-color: aliceblue;
+  border-radius: 1.5rem;
+  margin-top: 10%;
+  padding:  10px 0px;
 }
 
+.signup {
+  display: flex;
+  flex-direction: column;
+  color:#222;
+  position:relative;
+  text-align: center;
+  z-index: 999;
+  min-width: 370px;
+  width: 520px;
+  height: fit-content;
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 1.5rem;
+  padding:  50px 0px;
+}
+
+.signup header{
+    color:#222;
+    width: 100%;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+.signup form{
+  padding: 0px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .content header {
-  color: white;
+  color:#222;
+  width: 100%;
   font-size: 30px;
   font-weight: 600;
-  margin: 0 0 35px 0;
+  margin: 45px 0 0 0;
   font-family: "Poppins", sans-serif;
+}
+.login-form{
+  padding: 25px 30px;
 }
 
 .field {
   position: relative;
-  height: 45px;
+  height: 75px;
   width: 100%;
   display: flex;
-  background: rgba(255, 255, 255, 0.91);
+  flex-direction: column;
+  background: transparent;
+  margin: 4px 0px;
+}
+
+.field label{
+  text-align:justify;
+  width: 100%;
+  height: ;
+  padding: 7px;
 }
 
 .field span {
@@ -52,10 +129,13 @@
 }
 
 .field input {
+  padding: 15px;
+  margin-top: 0px;
+  margin-left: 0px;
   height: 100%;
-  width: 100%;
-  background: transparent;
+  background: white;
   border: none;
+  border-radius: 1rem;
   outline: none;
   color: #222;
   font-size: 16px;
@@ -68,6 +148,7 @@
 }
 
 input[type="submit"] {
+  margin:15px 0px;
   background: #3498db;
   border: 1px solid #2691d9;
   color: white;
@@ -76,6 +157,7 @@ input[type="submit"] {
   font-weight: 600;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
+  height: 50px;
 }
 
 input[type="submit"]:hover {
@@ -96,49 +178,58 @@ input[type="submit"]:hover {
   display: block;
   overflow: hidden;
 }
+.layout{
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 275px auto;
+}
 
 .navbar {
-  display: block;
-  grid-area: sidebar;
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   height: 100vh;
-  background-color: rgb(147, 34, 34);
+  background-color: var(--color1);
+}
+
+.logo{
+  width: 275;
+  min-height: 50px;
+  height: fit-content;
 }
 
 .list {
-  list-style-type: none;
   margin: 0;
-  padding: 20px;
-  width: 220px;
+  list-style-type: none;
+  width: 275px;
+  padding:0;
 }
 
 .list li a {
   display: block;
-  border-radius: 15px;
   color: #fff;
-  background-color: rgb(255, 179, 0);
-  padding: 8px 8px 8px 0;
+  background-color: var(--color1);
+  padding: 16px 8px;
   text-decoration: none;
-  margin: 10px 0;
   font-size: 22px;
   font-weight: bolder;
   font-family: "Montserrat", sans-serif;
 }
 
-.list-item a.active {
-  color: red;
+.list-item a:active {
+  background-color: var(--color1h);
 }
 
 .list-item a:hover:not(.active) {
-  background-color: #868613f9;
-  color: red;
+  background-color: var(--color2);
 }
 
 .list-item a:hover:not(.active) .fa {
-  background-color: #868613f9;
-  color: red;
+  background-color: var(--color2);;
 }
-
 .a-p {
   position: relative;
   left: 60px;
@@ -148,18 +239,13 @@ input[type="submit"]:hover {
 
 .sec {
   display: block;
-  grid-area: content;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
-  display: block;
   overflow: hidden;
-  margin: 20px;
-  padding: 0px 30px;
-  border-radius: 10px;
-  height: 95vh;
-  width: 77.5vw;
-  position: absolute;
+  padding: 30px 30px;
+  height: 100vh;
+  width: 100%;
   right: 0;
   bottom: 0;
   font-size: 18px;
@@ -168,10 +254,10 @@ input[type="submit"]:hover {
 }
 
 table {
-  width: 1200px;
+  width: 80%;
   border-collapse: collapse;
-  overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
 }
 
 th {

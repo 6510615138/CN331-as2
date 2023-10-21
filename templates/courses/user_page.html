@@ -2,19 +2,24 @@
 {% load static %}
 {% block head %} Profile {% endblock %}
 {% block page %}
+<div class="layout">
     <nav class="navbar">
         <ul class="list">
+            <div class="logo"></div>
             {% if admin %}
-            <li class="list-item"><a class="active" href="{% url 'user_page' %}"><p class="a-p">Admin Profile</p></a></li>
+            <li class="list-item"><a href="{% url 'user_page' %}"><p class="a-p">Admin Profile</p></a></li>
             <li class="list-item"><a href="{% url 'admin:index' %}"><p class="a-p">Admin Site</p></a></li>
             <li class="list-item"><a href="{% url 'management' %}" method = "get"><p class="a-p">Scholar List</p></a></li>
             {% else %}
-            <li class="list-item"><a class="active" href="{% url 'user_page' %}"><p class="a-p">User Profile</p></a></li>
-            <li class="list-item"><a href="{% url 'board_page' %}" method = "get"><p class="a-p">My Course</p></a></li>
+            <li class="list-item"><a href="{% url 'user_page' %}"><p class="a-p">User Profile</p></a></li>
+            <li class="list-item"><a href="{% url 'board_page' %}" method = "get"><p class="a-p">My course</p></a></li>
             {% endif %}
-            <li class="list-item"><a href="{% url 'course_page' %}"><p class="a-p">Course List</p></a></li>
+            <li class="list-item"><a class="active" href="{% url 'course_page' %}"><p class="a-p">Course List</p></a></li>
+        </ul>
+        <ul class="list">
             <li class="list-item"><a href="{% url 'logout_view' %}"><p class="a-p">Log Out</p></a></li>
         </ul>
+        
     </nav>
     <section class="sec">
         <div class="sec-div-cover pf">
@@ -24,5 +29,6 @@
             <h4>Email : {{ email }}</h4>
         </div>
     </section>
+</div>
 
 {% endblock %}

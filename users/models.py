@@ -8,7 +8,7 @@ class Scholar(models.Model):
     scholar_email = models.CharField(max_length=100) # email
 
     def __str__(self):
-        return f'{self.ID} + " : " + {self.scholar_name}'
+        return f'{self.ID} : {self.scholar_name}'
     
     def get_id(self):
         return f'{self.ID}'
