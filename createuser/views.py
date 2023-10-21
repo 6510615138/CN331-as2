@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import createUserForm
 from django.contrib.auth import login
 
-def createUser(request):
+def create_user_view(request):
     # Check if the user is already authenticated and log them out
     if request.user.is_authenticated:
         return redirect('/courses/user_page/')

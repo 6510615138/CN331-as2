@@ -18,7 +18,7 @@ load_dotenv('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 
-
+ALLOWED_HOSTS=['*']
 # Initialise environment variables
 
 
