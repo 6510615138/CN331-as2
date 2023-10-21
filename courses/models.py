@@ -13,7 +13,7 @@ class Course(models.Model):
     course_status = models.BooleanField(default=True) # status
 
     def __str__(self):
-        return f'{self.ID} + " : " + {self.course_name} + "Seat : " + {self.course_seat}' 
+        return f'{self.ID} : {self.course_name} Seat :{self.course_seat}' 
     
 
 
@@ -22,4 +22,4 @@ class Register(models.Model):
     reg_course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.reg_scholar_id} + " : " + {self.reg_course_id}'
+        return f'{self.reg_scholar_id} : {self.reg_course_id}'
